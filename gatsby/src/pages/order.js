@@ -1,9 +1,10 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 export default function OrderPage() {
   return (
-    <div>
+    <Layout>
       <p>This is the OrderPage!</p>
-    </div>
+    </Layout>
   );
 }
