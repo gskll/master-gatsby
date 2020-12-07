@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event';
 
 function createPatchFrom(value) {
   return PatchEvent.from(value == '' ? unset() : set(Number(value)));
 }
 
-const formatMoney = Intl.NumberFormat('en-GB', {
+const formatMoney = Intl.NumberFormat('en-US', {
   style: 'currency',
-  currency: 'GBP',
+  currency: 'USD',
 }).format;
 
-export default function PriceInput({ type, value, onChange, inputComponent }) {
+function PriceInput({ type, value, onChange, forwardedRef }) {
   return (
     <div>
       <h2>
@@ -19,7 +19,7 @@ export default function PriceInput({ type, value, onChange, inputComponent }) {
       <p>{type.description}</p>
       <input
         type={type.name}
-        ref={inputComponent}
+        ref={forwardedRef}
         value={value}
         onChange={(e) => onChange(createPatchFrom(e.target.value))}
       />
@@ -27,6 +27,11 @@ export default function PriceInput({ type, value, onChange, inputComponent }) {
   );
 }
 
+// Sanity accessibility
 PriceInput.focus = function () {
   this._inputElement.focus();
 };
+
+export default forwardRef((props, ref) => (
+  <PriceInput {...props} forwardedRef={ref} />
+));
