@@ -2,6 +2,8 @@
 
 /gatsby/.cache
 /gatsby/public
+/gatsby/node_modules
+/sanity/node_modules
 
 # dependencies
 /node_modules
