@@ -4,6 +4,7 @@
 /gatsby/public
 /gatsby/node_modules
 /sanity/node_modules
+.env
 
 # dependencies
 /node_modules
