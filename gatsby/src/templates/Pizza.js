@@ -1,7 +1,7 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'styled-components';
+import React from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
+import styled from "styled-components";
 
 const PizzaGrid = styled.div`
   display: grid;
@@ -27,6 +27,7 @@ export default function SinglePizzaPage({ data: { pizza } }) {
 
 // Needs to be dynamic based on the slug passed
 // in via context in gatsby-node
+
 export const query = graphql`
   query($slug: String!) {
     pizza: sanityPizza(slug: { current: { eq: $slug } }) {
