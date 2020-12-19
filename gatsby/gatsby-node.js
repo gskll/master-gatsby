@@ -106,7 +106,18 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
       }
     }
   `);
+
   // 2. Turn each slicemaster into their own page
+  data.slicemasters.nodes.forEach((slicemaster) => {
+    actions.createPage({
+      path: `slicemaster/${slicemaster.slug.current}`,
+      component: path.resolve("./src/templates/Slicemaster.js"),
+      context: {
+        slug: slicemaster.slug.current,
+      },
+    });
+  });
+
   // 3. Figure out numpages based on numslicemasters and numperpage
   const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
   const pageCount = Math.ceil(data.slicemasters.totalCount / pageSize);
