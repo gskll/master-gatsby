@@ -6,9 +6,14 @@ export default function usePizza({ pizzas, inputs }) {
   //
   // State now in provider
   // const [order, setOrder] = useState([]);
-
   // access state via context
   const [order, setOrder] = useContext(OrderContext);
+
+  // State for order sending email
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
   // 2. Make a function to add things to order
   function addToOrder(orderedPizza) {
     setOrder([...order, orderedPizza]);
@@ -23,6 +28,14 @@ export default function usePizza({ pizzas, inputs }) {
       ...order.slice(index + 1),
     ]);
   }
+
+  //function run when someone submits the form
+  async function submitOrder(e) {
+    e.preventDefault();
+    console.log(e);
+    setLoading(true);
+  }
+
   // 4. Send this data to a serverless function on checkout
   // TODO
 
@@ -30,5 +43,9 @@ export default function usePizza({ pizzas, inputs }) {
     order,
     addToOrder,
     removeFromOrder,
+    error,
+    loading,
+    message,
+    submitOrder,
   };
 }
