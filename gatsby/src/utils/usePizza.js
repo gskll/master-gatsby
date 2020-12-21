@@ -1,7 +1,10 @@
 import { useState, useContext } from "react";
 import OrderContext from "../components/OrderContext";
+import formatMoney from "./formatMoney";
+import calculateOrderTotal from "./calculateOrderTotal";
+import attachNamesAndPrices from "./attachNamesAndPrices";
 
-export default function usePizza({ pizzas, inputs }) {
+export default function usePizza({ pizzas, values }) {
   // 1. Create state to hold order
   //
   // State now in provider
@@ -34,6 +37,14 @@ export default function usePizza({ pizzas, inputs }) {
     e.preventDefault();
     console.log(e);
     setLoading(true);
+    // gather all the data
+    const body = {
+      order: attachNamesAndPrices(order, pizzas),
+      total: formatMoney(calculateOrderTotal(order, pizzas)),
+      name: values.name,
+      email: values.email,
+    };
+    console.log(body);
   }
 
   // 4. Send this data to a serverless function on checkout

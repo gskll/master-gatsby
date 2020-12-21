@@ -28,7 +28,7 @@ export default function OrderPage({ data }) {
     submitOrder,
   } = usePizza({
     pizzas,
-    inputs: values,
+    values: values,
   });
 
   return (
