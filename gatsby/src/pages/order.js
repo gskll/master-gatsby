@@ -16,6 +16,7 @@ export default function OrderPage({ data }) {
   const { values, updateValue } = useForm({
     name: "",
     email: "",
+    mapleSyrup: "",
   });
 
   const {
@@ -40,24 +41,27 @@ export default function OrderPage({ data }) {
       <OrderStyles onSubmit={submitOrder}>
         <fieldset disabled={loading}>
           <legend>Your Info</legend>
-          <label htmlFor="name">
-            Name
-            <input
-              type="text"
-              name="name"
-              value={values.name}
-              onChange={updateValue}
-            />
-          </label>
-          <label htmlFor="email">
-            Email
-            <input
-              type="email"
-              name="email"
-              value={values.email}
-              onChange={updateValue}
-            />
-          </label>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={values.name}
+            onChange={updateValue}
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={values.email}
+            onChange={updateValue}
+          />
+          <input
+            type="mapleSyrup"
+            name="mapleSyrup"
+            className="mapleSyrup"
+            value={values.mapleSyrup}
+            onChange={updateValue}
+          />
         </fieldset>
         <fieldset className="menu" disabled={loading}>
           <legend>Menu</legend>

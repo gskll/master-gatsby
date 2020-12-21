@@ -32,7 +32,7 @@ export default function usePizza({ pizzas, values }) {
     ]);
   }
 
-  //function run when someone submits the form
+  // function runs when someone submits the form
   async function submitOrder(e) {
     e.preventDefault();
     setLoading(true);
@@ -45,6 +45,7 @@ export default function usePizza({ pizzas, values }) {
       total: formatMoney(calculateOrderTotal(order, pizzas)),
       name: values.name,
       email: values.email,
+      mapleSyrup: values.mapleSyrup,
     };
 
     // 4. Send this data to a serverless function on checkout
