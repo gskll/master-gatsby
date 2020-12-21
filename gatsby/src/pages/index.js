@@ -6,7 +6,10 @@ import LoadingGrid from "../components/LoadingGrid";
 function CurrentlySlicing({ slicemasters }) {
   return (
     <div>
-      <LoadingGrid count={4} />
+      {!slicemasters && <LoadingGrid count={4} />}
+      {slicemasters && !slicemasters?.length && (
+        <p>No one is working right now</p>
+      )}
     </div>
   );
 }
@@ -14,7 +17,8 @@ function CurrentlySlicing({ slicemasters }) {
 function HotSlices({ hotSlices }) {
   return (
     <div>
-      <LoadingGrid count={4} />
+      {!hotSlices && <LoadingGrid count={4} />}
+      {hotSlices && !hotSlices?.length && <p>Nothing in the case</p>}
     </div>
   );
 }
