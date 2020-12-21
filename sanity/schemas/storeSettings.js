@@ -2,7 +2,7 @@ import { MdStore as icon } from "react-icons/md";
 
 export default {
   // computer name
-  name: "Settings",
+  name: "storeSettings",
   // visible title
   title: "Settings",
   type: "document",
