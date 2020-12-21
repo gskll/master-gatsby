@@ -31,6 +31,9 @@ export default function OrderPage({ data }) {
     values: values,
   });
 
+  if (message) {
+    return <p>{message}</p>;
+  }
   return (
     <>
       <SEO title="Order a Pizza!" />
