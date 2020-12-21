@@ -43,12 +43,15 @@ function wait(ms = 0) {
     setTimeout(resolve, ms);
   });
 }
+
+// VERCEL: module.exports = async (req, res) => {
 exports.handler = async (event, context) => {
   await wait(5000);
   const body = JSON.parse(event.body);
 
   // Check if honeypot filled out
   if (body.mapleSyrup) {
+    // VERCEL: return res.status(400).json({message:'...'})
     return {
       statusCode: 400,
       body: JSON.stringify({ message: "BoopBeepBopZzzst Goodbye ERR3423432" }),
@@ -58,9 +61,8 @@ exports.handler = async (event, context) => {
   const requiredFields = ["email", "name", "order"];
 
   for (const field of requiredFields) {
-    console.log(`Checking ${field} is good`);
-
     if (!body[field]) {
+      // VERCEL: return res.status(400).json({message:'...'})
       return {
         statusCode: 400,
         body: JSON.stringify({
@@ -72,6 +74,7 @@ exports.handler = async (event, context) => {
 
   // make sure they actually have items in the order
   if (!body.order.length) {
+    // VERCEL: return res.status(400).json({message:'...'})
     return {
       statusCode: 400,
       body: JSON.stringify({
@@ -88,6 +91,8 @@ exports.handler = async (event, context) => {
     subject: "New order!",
     html: generateOrderEmail({ order: body.order, total: body.total }),
   });
+
+  // VERCEL: return res.status(400).json({message:'...'})
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Success" }),
