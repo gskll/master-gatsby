@@ -159,3 +159,64 @@ Pages created on build
 - query `totalCount`, calculate number of pages and create them
 - dynamically query data with `skip` and `limit` params in graphql query to have each page in component
 
+
+
+## React-Helmet
+
+For SEO/head/meta HTML data
+
+Can stick a helmet anywhere and it will go up to head
+
+Create reusable SEO component with sensible defaults --> `gatsby-config.js` React-Helmet plugin
+
+If don't specify a title will use the previous page's title
+
+## Maintaining state
+
+Gatsby unmounts/remounts on leaving pages. To persist state across nav events have to attach it to highest Gatsby element
+
+`wrapRootElement` in `gatsby-browser.js`
+
+
+
+## Serverless  functions
+
+similar to running a node server, but just does one thing then shuts itself down
+
+can host serverless functions anywhere -> netlify -> AWS Lambda
+
+`functions/` dir with config in `netflify.toml` both in project root
+
+can `npm init` for a package.json for each function
+
+`nodemailer` for sending emails. can use sendgrid, postmark or ethereal.email for testing
+
+
+
+## Create honeypot for bots
+
+field that regular people don't fill out -> instead of captcha
+
+hide the input but not just with hidden attribute
+
+class name display none
+
+
+
+## Settings page - one off
+
+Can configure in Sanity schema
+
+Add sidebar.js to only allow access to a particular settings page
+
+
+
+Data fetched through Gatsby graphql is only fetched at build time
+
+If you want to fetch client-side: directly from sanity
+
+`sanity graphql list` gives the url to graphql database
+
+Sanity GraphQL not the same as Gatsby GraphQL
+
+Custom gatsby hook to fetch the data
