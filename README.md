@@ -220,3 +220,36 @@ If you want to fetch client-side: directly from sanity
 Sanity GraphQL not the same as Gatsby GraphQL
 
 Custom gatsby hook to fetch the data
+
+
+
+
+
+## Deployment
+
+Hosting backend: can do it on sanity: `sanity deploy`
+
+Build gatsby with `npm run build`
+
+Deploy to Netlify. `sanity hook create` to rebuild on sanity data change
+
+### Deploy on own server
+
+`gatsby-config.js` `pathPrefix: '/path'` 
+
+`npm run build -- --prefix-paths`
+
+doesn't run serverless functions
+
+### Deploying to Vercel instead of Netlify
+
+serverless functions: switch lambda function signature `exports.handler=(event, context)...` to `module.exports=(req,res)`. Arguments change from 
+
+you don't need separate package.jsons for each serverless function with vercel. it figures out what it needs
+
+utilities/logic same
+
+comments in `placeOrder.js`
+
+vercel CLI
+
