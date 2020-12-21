@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
-import Logo from './Logo';
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import Logo from "./Logo";
 
 const NavStyles = styled.nav`
-  margin-bottom: 3rem;
+  // margin-bottom: 3rem;
 
   .logo {
     transform: translateY(-25%);
