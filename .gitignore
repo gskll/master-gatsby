@@ -5,6 +5,7 @@
 /gatsby/node_modules
 /sanity/node_modules
 .env
+/sanity/dist
 
 # dependencies
 /node_modules
