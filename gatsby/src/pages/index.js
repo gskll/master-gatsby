@@ -38,6 +38,12 @@ function HotSlices({ hotSlices }) {
 export default function HomePage() {
   const { hotSlices, slicemasters } = useLatestData();
 
+  console.log("env");
+  console.log(process.env.NODE_ENV);
+  console.log(process.env.URL);
+  // console.log(process.env.URL.NETLIFY_SITE_URL);
+  console.log(process.env.NETLIFY_ENV);
+  console.log(process.env.CONTEXT);
   return (
     <>
       <SEO title="Welcome!" />
